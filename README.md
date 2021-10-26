@@ -1,11 +1,25 @@
-# minisalesforce
+# MiniSalesforce
 
-Here will be some information about the app.
+Experience salesforce in a mini app.
 
-## How to start?
+Frontend..
 
-Start simple by running `yarn watch` (or `npm run watch`, if you set up the project with `npm`). This will start the project with a local development server.
+1. Create standard lwc app
+    - `npx create-lwc-app minisalesforce`
+2. Prerequisites for using slds and base components to our project.
+    - install npm packages for lwc base components and slds
+        `npm install lightning-base-components`
+        `npm install @salesforce-ux/design-system --save-dev`
+    - Add following line in `modules` key in lwc.config.json to ensure the base-components dependency is specified
+        `{ "npm": "lightning-base-components" }`
+    - Add following line  to `resources` list in lwc-services.config.js to configure SLDS
+        `{ from: 'node_modules/@salesforce-ux/design-system/assets', to: 'src/SLDS' },{ from: 'node_modules/@salesforce-ux/design-system/assets', to: 'dist/SLDS' }`
+    - Add following as the `first line` in index.js to activate synthetic shadow
+        `import @lwc/synthetic-shadow`
+    - Add following line to index.html to include slds in our app
+        `<link rel="stylesheet" href="/SLDS/styles/salesforce-lightning-design-system.min.css"/>`
+2. create a home app inside /src
+3. Show login related values in a record view form
+4. On clicking the Login the Auth will start.
 
-The source files are located in the [`src`](./src) folder. All web components are within the [`src/client/modules`](./src/modules) folder. The folder hierarchy also represents the naming structure of the web components. The entry file for the custom Express configuration can be found in the ['src/server'](./src/server) folder.
-
-Find more information on the main repo on [GitHub](https://github.com/muenzpraeger/create-lwc-app).
+Over to backend...
